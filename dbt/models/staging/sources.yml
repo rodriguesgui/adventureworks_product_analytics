@@ -1,0 +1,49 @@
+version: 2
+
+sources:
+  - name: Person
+    database: "adventureworks_raw"
+    schema: "Person"
+    tables:
+      - name: CountryRegion
+        description: "Country and region reference data."
+      - name: Person
+        description: "Person information including name and contact details."
+
+  - name: Production
+    database: "adventureworks_raw"
+    schema: "Production"
+    tables:
+      - name: Product
+        description: "Product master data including attributes and pricing."
+      - name: ProductCategory
+        description: "Top-level product category hierarchy."
+      - name: ProductSubcategory
+        description: "Product subcategory linked to categories."
+      - name: ProductCostHistory
+        description: "Historical cost records per product with SCD Type 2 pattern."
+      - name: ProductListPriceHistory
+        description: "Historical list price records per product with SCD Type 2 pattern."
+      - name: ProductInventory
+        description: "Product inventory levels by location."
+
+  - name: Sales
+    database: "adventureworks_raw"
+    schema: "Sales"
+    tables:
+      - name: Customer
+        description: "Customer records linked to persons and stores."
+      - name: SalesOrderHeader
+        description: "Sales order header with order-level information."
+      - name: SalesOrderDetail
+        description: "Sales order line items with product and pricing details."
+      - name: SalesPerson
+        description: "Sales person records with quota and performance data."
+      - name: SalesTerritory
+        description: "Sales territory definitions and regional groupings."
+      - name: SpecialOffer
+        description: "Special offer definitions including discount percentages."
+      - name: SpecialOfferProduct
+        description: "Mapping between special offers and eligible products."
+      - name: Store
+        description: "Store information linked to sales persons."

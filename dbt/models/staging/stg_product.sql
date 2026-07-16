@@ -1,0 +1,26 @@
+select 
+    "Name" as product_name,
+    "Size" as product_size,
+    "Class" as product_class,
+    "Color" as product_color,
+    "Style" as product_style,
+    "Weight" as product_weight,
+    "MakeFlag" as product_make_flag,
+    "ListPrice" as product_list_price,
+    "ProductID" as product_id,
+    "ProductLine" as product_line,
+    "SellEndDate" as product_sell_end_date,
+    "ModifiedDate" as product_modified_date,
+    "ReorderPoint" as product_reorder_point,
+    "StandardCost" as product_standard_cost, -- custo padrao sem histórico, usar na margem ProductCostHistory para histórico de custo
+    "ProductNumber" as product_number,
+    "SellStartDate" as product_sell_start_date,
+    "ProductModelID" as product_model_id,
+    "DiscontinuedDate" as product_discontinued_date,
+    "SafetyStockLevel" as product_safety_stock_level,
+    "DaysToManufacture" as product_days_to_manufacture,
+    "FinishedGoodsFlag" as product_finished_goods_flag,
+    "SizeUnitMeasureCode" as product_size_unit_measure_code,
+    "ProductSubcategoryID" as product_subcategory_id,
+    "WeightUnitMeasureCode" as product_weight_unit_measure_code
+from {{ source('Production', 'Product') }}

@@ -1,0 +1,88 @@
+version: 2
+
+models:
+  - name: fact_sales
+    description: "Table containing sales data, including order details and associated costs."
+    columns:
+      - name: product_id
+        data_tests:
+          - not_null
+      - name: sales_order_detail_id
+        data_tests:
+          - not_null
+          - unique
+      - name: order_quantity
+        data_tests:
+          - not_null
+      - name: unit_price
+        data_tests:
+          - not_null
+      - name: line_total
+        data_tests:
+          - not_null
+      - name: unit_price_discount
+        data_tests:
+          - not_null
+      - name: order_date
+        data_tests:
+          - not_null
+      - name: net_revenue
+        description: "Calculated net revenue after applying discounts."
+        data_tests:
+          - not_null
+      - name: total_cost
+        description: "Total cost associated with the products sold."
+        data_tests:
+          - not_null
+      - name: profit
+        description: "Calculated profit as the difference between net revenue and total cost."
+        data_tests:
+          - not_null
+      - name: gross_margin_pct
+        description: "Calculated gross margin percentage based on profit and net revenue."
+        data_tests:
+          - not_null
+
+
+  - name: dim_product
+    description: "Dimension table containing product details."
+    columns:
+      - name: product_name
+        data_tests:
+          - not_null
+          - unique
+      - name: product_id
+        data_tests:
+          - not_null
+          - unique
+          - relationships:
+              to: ref('stg_product')
+              field: product_id
+      - name: product_number
+        data_tests:
+          - not_null
+          - unique
+
+  - name: dim_store
+    description: "Dimension table containing store information with territory and regional grouping."
+    columns:
+      - name: store_id
+        data_tests:
+          - not_null
+          - unique
+      - name: store_name
+        data_tests:
+          - not_null
+      - name: territory_id
+        data_tests:
+          - not_null
+      - name: territory_name
+        data_tests:
+          - not_null
+      - name: territory_group
+        data_tests:
+          - not_null
+      - name: country_region_code
+        data_tests:
+          - not_null
+ 

@@ -1,0 +1,47 @@
+services:
+
+  sqlserver:
+    build:
+      context: ./docker
+      dockerfile: sqlserver.Dockerfile
+    container_name: aw_sqlserver
+    ports:
+      - "1444:1433"
+    volumes:
+      - ./data:/var/backups
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=${MSSQL_SA_PASSWORD}
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: aw_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5444:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  dbt:
+    build:
+      context: ./docker
+      dockerfile: dbt.Dockerfile
+    container_name: aw_dbt
+    volumes:
+      - ./dbt:/usr/app/dbt
+    working_dir: /usr/app/dbt
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres_data:

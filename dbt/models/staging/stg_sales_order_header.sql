@@ -1,0 +1,25 @@
+select
+    "Status" as so_status,
+    "TaxAmt" as tax_amount,
+    "DueDate" as due_date,
+    "Freight" as freight,
+    "ShipDate" as ship_date,
+    "SubTotal" as subtotal,
+    "OrderDate" as order_date,
+    "CustomerID" as customer_id,
+    "TerritoryID" as territory_id,
+    "CreditCardID" as credit_card_id,
+    "ModifiedDate" as modified_date,
+    "SalesOrderID" as sales_order_id,
+    "ShipMethodID" as ship_method_id,
+    "AccountNumber" as account_number,
+    "SalesPersonID" as sales_person_id,
+    "CurrencyRateID" as currency_rate_id,
+    "RevisionNumber" as revision_number,
+    "BillToAddressID" as bill_to_address_id,
+    "OnlineOrderFlag" as online_order_flag,
+    "ShipToAddressID" as ship_to_address_id,
+    "SalesOrderNumber" as sales_order_number, --
+    "PurchaseOrderNumber" as purchase_order_number,
+    "CreditCardApprovalCode" as credit_card_approval_code
+from {{ source('Sales', 'SalesOrderHeader') }}

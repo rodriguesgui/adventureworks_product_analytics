@@ -1,0 +1,199 @@
+version: 2
+
+models:
+  - name: stg_country_region
+    description: "Country and region reference data."
+    columns:
+      - name: person_country_region_code
+        data_tests:
+          - not_null
+          - unique
+      - name: person_country_region_name
+        data_tests:
+          - not_null
+
+  - name: stg_person
+    description: "Person information including name and contact details."
+    columns:
+      - name: person_business_entity_id
+        data_tests:
+          - not_null
+          - unique
+      - name: person_first_name
+        data_tests:
+          - not_null
+      - name: person_last_name
+        data_tests:
+          - not_null
+
+  - name: stg_product
+    description: "Product master data including attributes and pricing."
+    columns:
+      - name: product_id
+        data_tests:
+          - not_null
+          - unique
+      - name: product_name
+        data_tests:
+          - not_null
+          - unique
+      - name: product_number
+        data_tests:
+          - not_null
+          - unique
+
+  - name: stg_product_category
+    description: "Top-level product category hierarchy."
+    columns:
+      - name: product_category_id
+        data_tests:
+          - not_null
+          - unique
+      - name: product_category_name
+        data_tests:
+          - not_null
+          - unique
+
+  - name: stg_product_cost_history
+    description: "Historical cost records per product with SCD Type 2 pattern."
+    columns:
+      - name: product_id
+        data_tests:
+          - not_null
+      - name: product_standard_cost
+        data_tests:
+          - not_null
+      - name: start_date
+        data_tests:
+          - not_null
+
+  - name: stg_product_inventory
+    description: "Product inventory levels by location."
+    columns:
+      - name: product_id
+        data_tests:
+          - not_null
+      - name: product_location_id
+        data_tests:
+          - not_null
+      - name: product_quantity
+        data_tests:
+          - not_null
+
+  - name: stg_product_list_price_history
+    description: "Historical list price records per product with SCD Type 2 pattern."
+    columns:
+      - name: product_id
+        data_tests:
+          - not_null
+      - name: list_price
+        data_tests:
+          - not_null
+      - name: list_price_start_date
+        data_tests:
+          - not_null
+
+  - name: stg_product_subcategory
+    description: "Product subcategory linked to categories."
+    columns:
+      - name: product_subcategory_id
+        data_tests:
+          - not_null
+          - unique
+      - name: product_subcategory_name
+        data_tests:
+          - not_null
+          - unique
+
+  - name: stg_sales_customer
+    description: "Customer records linked to persons and stores."
+    columns:
+      - name: customer_id
+        data_tests:
+          - not_null
+          - unique
+
+  - name: stg_sales_order_header
+    description: "Sales order header with order-level information."
+    columns:
+      - name: sales_order_id
+        data_tests:
+          - not_null
+          - unique
+      - name: order_date
+        data_tests:
+          - not_null
+      - name: customer_id
+        data_tests:
+          - not_null
+
+  - name: stg_sales_order_detail
+    description: "Sales order line items with product and pricing details."
+    columns:
+      - name: sales_order_detail_id
+        data_tests:
+          - not_null
+          - unique
+      - name: sales_order_id
+        data_tests:
+          - not_null
+      - name: product_id
+        data_tests:
+          - not_null
+      - name: unit_price
+        data_tests:
+          - not_null
+      - name: order_quantity
+        data_tests:
+          - not_null
+
+  - name: stg_sales_person
+    description: "Sales person records with quota and performance data."
+    columns:
+      - name: business_entity_id
+        data_tests:
+          - not_null
+          - unique
+
+  - name: stg_sales_special_offer
+    description: "Special offer definitions including discount percentages."
+    columns:
+      - name: special_offer_id
+        data_tests:
+          - not_null
+          - unique
+      - name: special_offer_discount_pct
+        data_tests:
+          - not_null
+
+  - name: stg_sales_special_offer_product
+    description: "Mapping between special offers and eligible products."
+    columns:
+      - name: product_id
+        data_tests:
+          - not_null
+      - name: product_special_offer_id
+        data_tests:
+          - not_null
+
+  - name: stg_sales_store
+    description: "Store information linked to sales persons."
+    columns:
+      - name: sales_store_business_entity_id
+        data_tests:
+          - not_null
+          - unique
+      - name: sales_store_name
+        data_tests:
+          - not_null
+
+  - name: stg_sales_territory
+    description: "Sales territory definitions and regional groupings."
+    columns:
+      - name: sales_territory_id
+        data_tests:
+          - not_null
+          - unique
+      - name: sales_territory_name
+        data_tests:
+          - not_null
