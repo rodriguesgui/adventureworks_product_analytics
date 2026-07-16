@@ -80,7 +80,6 @@ O Airbyte conecta ao SQL Server como source e replica os schemas `Sales`, `Produ
 
 ### Lineage
 
-> _Insira aqui o print do lineage gerado pelo `dbt docs`_
 
 ![dbt Lineage](images/dbt_lineage.png)
 
@@ -156,7 +155,6 @@ Evita repetição do cálculo de receita líquida nos 3 lugares onde é necessá
 
 ### Página 1 — Visão Executiva
 
-> _Insira aqui print da página_
 
 ![Visão Executiva](images/p1_visao_executiva.png)
 
@@ -166,7 +164,6 @@ KPIs gerais, evolução de receita por mês comparando anos, tabela de receita p
 
 ### Página 2 — Rentabilidade do Portfólio
 
-> _Insira aqui print da página_
 
 ![Rentabilidade](images/p2_rentabilidade.png)
 
@@ -176,7 +173,6 @@ Evolução da margem bruta ao longo do tempo, produtos com maior e menor margem,
 
 ### Página 3 — Giro x Margem
 
-> _Insira aqui print da página_
 
 ![Giro x Margem](images/p3_giro_margem.png)
 
@@ -195,7 +191,6 @@ A classificação por quadrante também aparece na tabela lateral, com filtro in
 
 ### Página 4 — Impacto de Desconto
 
-> _Insira aqui print da página_
 
 ![Impacto de Desconto](images/p4_desconto.png)
 
@@ -207,7 +202,6 @@ Visuais: desconto médio por categoria (geral vs apenas pedidos com desconto), m
 
 ### Página 5 — Pareto de Receita
 
-> _Insira aqui print da página_
 
 ![Pareto](images/p5_pareto.png)
 
@@ -219,7 +213,6 @@ Curva de Pareto com subtítulo dinâmico calculado em DAX — o número atualiza
 
 ### Página 6 — Visão Regional e por Loja
 
-> _Insira aqui print da página_
 
 ![Regional](images/p6_regional.png)
 
