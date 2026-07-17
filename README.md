@@ -2,7 +2,7 @@
 
 > Pipeline completo de engenharia analítica sobre o dataset AdventureWorks da Microsoft — da ingestão bruta até o dashboard executivo de portfólio de produtos.
 
-![Dashboard Preview](images/dashboard_preview.png)
+![Dashboard Preview](images/p1_visao_executiva.png)
 
 ---
 
