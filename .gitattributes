@@ -1,0 +1,14 @@
+# Garante que todo arquivo SQL seja contado no gráfico
+*.sql linguist-detectable=true
+*.sql linguist-vendored=false
+*.sql linguist-generated=false
+
+# Garante que as configurações do dbt sejam contadas corretamente
+*.yml linguist-detectable=true
+*.yaml linguist-detectable=true
+
+# Mantém o HTML e arquivos de BI ocultos
+*.html linguist-vendored
+*.pbip linguist-vendored
+*.pbi linguist-vendored
+target/** linguist-vendored
